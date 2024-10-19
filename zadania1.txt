@@ -1,0 +1,193 @@
+zadanie 1
+---------------
+while True:
+    try:
+        waga = float(input("Podaj wagę (kg): "))
+        wzrost = float(input("Podaj wzrost (m): "))
+
+        if waga <= 0 or wzrost <= 0:
+            print("Podano nieprawidłowe wartości. Spróbuj ponownie.")
+            continue
+
+        bmi = waga / (wzrost ** 2)
+        print(f"Twoje BMI wynosi: {bmi:.2f}")
+
+        if bmi < 18.5:
+            print("Niedowaga")
+        elif bmi > 24.9:
+            print("Nadwaga")
+        else:
+            print("Waga prawidłowa")
+            break  
+
+    except ValueError:
+        print("Proszę podać prawidłowe liczby.")
+--------------
+zadanie 2
+-------------
+from unittest import expectedFailure
+
+while True:
+    try:
+        cena_towaru = float(input("Proszę podać cenę towaru(100-10 000):"))
+        liczba_rat = float(input("Proszę podać ilość rat(6-48):"))
+
+        if liczba_rat <6 or liczba_rat>48  or cena_towaru<100 or cena_towaru>10_000:
+            print("Podano nieprawidłowe wartości")
+            continue
+        if liczba_rat>=6 or liczba_rat<=12:
+            oprocentowanie=0.025
+        elif liczba_rat>=13 or liczba_rat<=24:
+            oprocentowanie=0.05
+        elif liczba_rat>=25 or liczba_rat<=48:
+            oprocentowanie=0.1
+        break
+    except ValueError:
+        print("Proszę podać prawidłowe liczby.")
+miesieczna_rata=float((cena_towaru*(1+oprocentowanie))/liczba_rat)
+print(f"Miesięczna rata wynosi: {miesieczna_rata:.2f}")
+
+---------
+zadanie 3
+---------
+		****wersja 1
+tab_nieparzyste=[]
+while True:
+    try:
+        liczba_calkowita=int(input("Proszę podać liczbę całkowitą dodatnią: "))
+        if(liczba_calkowita<=0):
+            print("Podana liczba musi być dodatnia")
+            continue
+
+        if liczba_calkowita%2==0:
+            liczba_calkowita=liczba_calkowita-1
+
+        for i in range(1,liczba_calkowita+1,2):
+            tab_nieparzyste.append(i)
+        break
+    except ValueError:
+        print("Podano nieprawidłowe wartości")
+print(", ".join(map(str,tab_nieparzyste)))
+
+
+	***wersja 2
+def zbierz_nieparzyste(start, end):
+    tab_nieparzyste = []
+    for i in range(start, end + 1):
+        if i % 2 != 0:
+            tab_nieparzyste.append(i)
+    return tab_nieparzyste
+
+tab_nieparzyste=[]
+while True:
+    try:
+        liczba_calkowita1=int(input("Proszę podać 1 liczbę całkowitą dodatnią: "))
+        liczba_calkowita2=int(input("Proszę podać 2 liczbę całkowitą dodatnią: "))
+
+        if(liczba_calkowita1<=0 or liczba_calkowita2<=0):
+            print("Podano nieprawidłowe wartości")
+            continue
+
+        start=min(liczba_calkowita1,liczba_calkowita2)
+        end=max(liczba_calkowita1,liczba_calkowita2)
+
+        nieparzyste=zbierz_nieparzyste(start,end)
+
+        if nieparzyste:
+            print(", ".join(map(str,nieparzyste)))
+        else:
+            print("Brak liczb nieparzystych w podanym zakresie")
+        break
+
+    except ValueError:
+        print("Podano nieprawidłowe wartości")
+
+print(", ".join(map(str,tab_nieparzyste)))
+
+-------------
+zadanie 4
+------------
+from unittest import expectedFailure
+
+while True:
+    try:
+        n=int(input("Proszę podać liczbę całkowitą dodanią:"))
+        a=int(input("Proszę podać liczbę potęgowaną: "))
+        if n<=0 or a<=0:
+            print("Podane liczby muszą być dodatnie")
+            continue
+        potegi = []
+        i = 0
+        while True:
+            potega = a ** i
+            if potega > n:
+                break
+            potegi.append(potega)
+            i += 1
+
+        print( ", ".join(map(str, potegi)))
+        break
+    except ValueError:
+        print("Podano nieprawidłowe wartości. Proszę spróbować ponownie.")
+----------
+zadanie 5
+----------
+from unittest import expectedFailure
+suma=0
+while True:
+    try:
+        n=int(input("Enter a number: "))
+        suma+=n
+        if(n==0):
+            break
+    except ValueError:
+        print("Podano błędną wartość")
+print(f"Suma liczb wynosi: {suma}")
+----------
+zadanie 6
+----------
+from unittest import expectedFailure
+tab=[]
+srednia=0
+while True:
+    try:
+        n=int(input('Enter a number: '))
+        if(n!=0):
+            tab.append(n)
+        if (n == 0):
+            break
+    except ValueError:
+        print('Invalid input')
+suma_dwoch_liczb=min(tab)+max(tab)
+for i in tab:
+    srednia+=i
+srednia=srednia/ len(tab)
+print(f"Użytkownik podał ciąg: {','.join(map(str,tab))}")
+print(f"Suma max i min liczby: {suma_dwoch_liczb}\nŚrednia arytmetyczna: {srednia}")
+
+----------
+zadanie 7
+----------
+from random import random
+from unittest import expectedFailure
+import random
+rand=random.randint(1,100)
+attempt=0
+while True:
+    try:
+        x=int(input("Choose a number(1-100):"))
+        attempt+=1
+        if(x>rand):
+            print("Your value is too high")
+
+        elif(x<rand):
+            print("Your value is too low")
+
+        if(x==rand):
+            print(f"Congratulations! You won! It took you {attempt} attempts!")
+            break
+    except ValueError:
+        print("Please enter a number")
+----------
+zadanie 8
+----------
